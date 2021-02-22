@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <div>
+                <div>
+                    <p>Bienvenido</p>
+                    <p:outputLabel value="#{admin.username}"/>
+                    <br/>
+                    <p:outputLabel value="#{admin.ideuser}"/>
+                    <br/><br/>
+                    <p:commandLink action="#{admin.logout}" value="Salir"></p:commandLink>
+                </div>                    
+            </div>
+            <div class="products-buttonbar">
+                <div>
+                    <p:commandButton value="Consultar" icon="pi pi-check" action="#{admin.consultarEncuestas()}"
+                                     update="dt-products" process="@this"/>
+                    <p:commandButton value="Crear nueva" icon="pi pi-check" action="#{admin.crearEncuesta()}"
+                                     update="dt-products" process="@this"/>
+                    <p:commandButton value="Eliminar" icon="pi pi-check" action="#{admin.eliminarEncuesta()}"
+                                     update="dt-products" process="@this"/>
+                    
+                </div>
+                
+            </div>
+            <p:dataTable id="dt-products" widgetVar="dtProducts" var="encuesta" value="#{admin.encuestas}"
+                        reflow="true" styleClass="products-table" rendered="#{admin.mostrarTabla}"
+                        selection="#{admin.selectedEncuestas}" rowKey="#{encuesta.idencuesta}" paginator="true"
+                        rows="10" rowSelectMode="add" paginatorPosition="bottom">              
+
+               
+
+               <p:column selectionMode="multiple" exportable="false"></p:column>
+
+               <p:column headerText="Usuaio" sortBy="#{encuesta.nombreusuario}" filterBy="#{encuesta.nombreusuario}">
+                   <h:outputText value="#{encuesta.nombreusuario}"/>
+               </p:column>
+               <p:column headerText="Email" sortBy="#{encuesta.email}" filterBy="#{encuesta.email}">
+                   <h:outputText value="#{encuesta.email}"/>
+               </p:column>               
+               <p:column headerText="Comentarios" sortBy="#{encuesta.comentarios}" filterBy="#{encuesta.comentarios}">
+                   <h:outputText value="#{encuesta.comentarios}"/>
+               </p:column>
+               <p:column headerText="Marca" sortBy="#{encuesta.nombremarcapc}" filterBy="#{encuesta.nombremarcapc}">
+                   <h:outputText value="#{encuesta.nombremarcapc}"/>
+               </p:column>
+               <p:column headerText="Fecha" sortBy="#{encuesta.fecha}" filterBy="#{encuesta.fecha}">
+                   <h:outputText value="#{encuesta.fecha}"/>
+               </p:column> 
+
+            </p:dataTable>
+            
+            <p:dialog>
+                
+            </p:dialog>
+            
+            
+            
+            
+            
+            
+            
+	</h:form>
+    </h:body>
+</html>
+

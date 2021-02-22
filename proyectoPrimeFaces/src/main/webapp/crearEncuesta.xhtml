@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <div>
+                <div>
+                    <p>Crear Encuesta</p>
+                    <p:outputLabel value="Usuario: "/>
+                    <p:outputLabel value="#{crear.username}"/>
+                    <br/>
+                    <p:outputLabel value="Id: "/>
+                    <p:outputLabel value="#{crear.ideuser}"/>
+                    <br/><br/>
+                    <p:commandLink action="#{crear.logout}" value="Salir"></p:commandLink>
+                    <br></br>
+                    <p:commandLink action="#{crear.volverInicio}" value="Volver"></p:commandLink>
+                </div>                    
+            </div>
+            
+            <p:outputPanel>
+                <h3>Crear encuesta</h3>
+		<h:outputText value="Email"/>
+                <p:inputText id="email"  value="#{crear.encuestaNueva.email}"></p:inputText>
+		<h:message for="email"></h:message>
+		<br></br><br></br>
+		
+                <h:outputText value="Comentarios" />
+                <p:inputTextarea id="comentarios" value="#{crear.encuestaNueva.comentarios}"></p:inputTextarea>
+		<h:message for="comentarios"></h:message>
+		<br></br><br></br>
+                
+                <h:outputText value="Marca PC"/>
+                <p:inputText id="marcapc"  value="#{crear.encuestaNueva.idemarcapc}"></p:inputText>
+		<h:message for="marcapc"></h:message>
+		<br></br><br></br>
+		
+                <p:commandButton action="#{crear.crearEncuestaNueva()}"
+			value="Crear"></p:commandButton>
+            </p:outputPanel>
+
+                              
+           
+        </h:form>
+    </h:body>
+</html>
+
